@@ -45,6 +45,39 @@ Set your API key:
 export ANTHROPIC_API_KEY=your_key_here
 ```
 
+Get one at [console.anthropic.com](https://console.anthropic.com).
+
+---
+
+## How it works
+
+1. Grabs `git diff HEAD~10..HEAD` + any uncommitted changes
+2. Sends the diff to Claude with a strict reviewer prompt
+3. Prints findings ranked by severity (max 5)
+4. Exits `0` if clean, `1` if problems found
+
+Good for pre-push hooks and CI gates.
+
+---
+
+## CI / pre-push hook
+
+Add to `.git/hooks/pre-push`:
+
+```bash
+#!/bin/sh
+npx holdup-ai || exit 1
+```
+
+Or in GitHub Actions:
+
+```yaml
+- name: holdup check
+  run: npx holdup-ai
+  env:
+    ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+```
+
 ---
 
 ## What it catches
