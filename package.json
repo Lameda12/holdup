@@ -1,0 +1,49 @@
+{
+  "name": "holdup-ai",
+  "version": "0.0.1",
+  "description": "Catches bugs Claude Code, Cursor, and Copilot ship to your PRs",
+  "main": "dist/index.js",
+  "bin": {
+    "holdup": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ai",
+    "code-review",
+    "claude",
+    "cli",
+    "git",
+    "pr-review",
+    "developer-tools"
+  ],
+  "author": "Lameda12",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lameda12/holdup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lameda12/holdup/issues"
+  },
+  "homepage": "https://github.com/Lameda12/holdup#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.91.1",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "execa": "^9.6.1",
+    "simple-git": "^3.36.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}
